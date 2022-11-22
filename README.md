@@ -43,4 +43,16 @@ now check the pods of `calico-system` namespace
 ```bash
 kubectl get po -A
 ```
+If it is single node then you need to taint, otherwise leave it
+```bash
+kubectl taint nodes --all node-role.kubernetes.io/master-
+```
 
+if you want to delete the cluster then
+```bash
+kubectl drain <node-name> --delete-emptydir-data --force --ignore-daemonsets
+```
+
+```bash
+sudo kubeadm reset
+```
